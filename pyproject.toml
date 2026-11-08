@@ -1,0 +1,43 @@
+[build-system]
+requires = ["hatchling>=1.24"]
+build-backend = "hatchling.build"
+
+[project]
+name = "town-hall-connector"
+dynamic = ["version"]
+description = "Python connector for the Town Hall volunteer-management API: start, keep alive and end shifts in permanent roles."
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+requires-python = ">=3.9"
+authors = [{ name = "Andrew Dzobko" }]
+keywords = ["town hall", "volunteers", "shifts", "time tracking", "django"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Framework :: Django",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Topic :: Software Development :: Libraries",
+    "Typing :: Typed",
+]
+dependencies = []
+
+[project.optional-dependencies]
+django = ["Django>=4.2"]
+
+[project.urls]
+Homepage = "https://github.com/Collert/Town-hall-connector"
+Issues = "https://github.com/Collert/Town-hall-connector/issues"
+
+[tool.hatch.version]
+path = "src/townhall_connector/__init__.py"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/townhall_connector"]
+
+[tool.hatch.build.targets.sdist]
+include = ["src", "tests", "README.md", "LICENSE", "CHANGELOG.md"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
